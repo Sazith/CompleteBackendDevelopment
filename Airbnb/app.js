@@ -7,10 +7,14 @@ const bodyParser = require('body-parser')
 
 // Local Module
 const userRouter = require('./routes/userRouter');
-const hostRouter = require('./routes/hostRouter');
-const rootDir = require('./utils/pathUtil')
+const {hostRouter} = require('./routes/hostRouter');
+const rootDir = require('./utils/pathUtil');
+// const {registerHome} = require('./routes/hostRouter')
 
-const app = express()
+const app = express();
+
+app.set('view engine', 'ejs');
+app.set('views', 'views');
 
 app.use((req, res, next) =>{
   console.log(req.url, req.method);

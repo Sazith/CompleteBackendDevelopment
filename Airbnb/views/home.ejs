@@ -13,6 +13,15 @@
   </header>
   <main>
     <a href="/host/add-home">Add Home</a>
+    <ul>
+      <% registerHome.forEach(home=>{ %>
+
+        <li>
+          <%= home.houseName %>
+        </li>
+
+        <% }) %>
+    </ul>
   </main>
 </body>
 

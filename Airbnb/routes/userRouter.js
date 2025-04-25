@@ -7,6 +7,7 @@ const userRouter = express.Router();
 
 // Local Module
 const rootDir = require('../utils/pathUtil')
+const {registerHome} = require('./hostRouter')
 
 userRouter.get("/",(req, res, next) => {
   // res.send(`
@@ -14,7 +15,10 @@ userRouter.get("/",(req, res, next) => {
   //   <a href="/host/add-home">Add Home</a>
   //   `);
   // res.sendFile(path.join(__dirname,'../','views','home.html'))
-  res.sendFile(path.join(rootDir,'views','home.html'))
+  console.log(registerHome);
+  
+  // res.sendFile(path.join(rootDir,'views','home.html'))
+  res.render('home',{registerHome})
 })
 
 module.exports = userRouter;
