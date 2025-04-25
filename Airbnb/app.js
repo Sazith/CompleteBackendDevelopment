@@ -1,3 +1,6 @@
+// Core Module
+const path = require('path')
+
 // External Module
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -5,6 +8,7 @@ const bodyParser = require('body-parser')
 // Local Module
 const userRouter = require('./routes/userRouter');
 const hostRouter = require('./routes/hostRouter');
+const rootDir = require('./utils/pathUtil')
 
 const app = express()
 
@@ -24,7 +28,7 @@ app.use(userRouter);
 //     `);
 // })
 
-app.use(hostRouter);
+app.use("/host",hostRouter);
 // app.get("/host/add-home",(req, res, next) => {
 //   res.send(`
 //     <h1>Register your home here</h1>
@@ -43,8 +47,12 @@ app.use(hostRouter);
 //     `);
 // })
 
+// app.use((req, res, next) =>{
+//   res.status(400).send(`<h1>404 Your page is not found in Airbnb</h1>`)
+// })
 app.use((req, res, next) =>{
-  res.status(400).send(`<h1>404 Your page is not found in Airbnb</h1>`)
+//  res.sendFile(path.join(__dirname,'views','404.html'))
+ res.sendFile(path.join(rootDir,'views','404.html'))
 })
 
 const PORT = 8000;
