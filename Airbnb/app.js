@@ -43,6 +43,9 @@ app.use(hostRouter);
 //     `);
 // })
 
+app.use((req, res, next) =>{
+  res.status(400).send(`<h1>404 Your page is not found in Airbnb</h1>`)
+})
 
 const PORT = 8000;
 app.listen(PORT, ()=>{
